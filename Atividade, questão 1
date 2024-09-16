@@ -1,0 +1,38 @@
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class ConsultaTelefones {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Solicita a quantidade de pessoas a ser cadastrada
+        System.out.print("Quantas pessoas deseja cadastrar? ");
+        int quantidade = scanner.nextInt();
+        scanner.nextLine(); // Consumir a nova linha após o número
+
+        // Cria um HashMap para armazenar os nomes e telefones
+        HashMap<String, String> agenda = new HashMap<>();
+
+        // Lê os nomes e telefones do usuário
+        for (int i = 0; i < quantidade; i++) {
+            System.out.print("Digite o nome da pessoa " + (i + 1) + ": ");
+            String nome = scanner.nextLine();
+            System.out.print("Digite o telefone de " + nome + ": ");
+            String telefone = scanner.nextLine();
+            agenda.put(nome, telefone); // Armazena o nome e telefone na agenda
+        }
+
+        // Pergunta ao usuário o nome que ele gostaria de consultar
+        System.out.print("Digite o nome que deseja consultar: ");
+        String nomeConsulta = scanner.nextLine();
+
+        // Verifica se o nome existe na agenda e exibe o telefone
+        if (agenda.containsKey(nomeConsulta)) {
+            System.out.println("O telefone de " + nomeConsulta + " é: " + agenda.get(nomeConsulta));
+        } else {
+            System.out.println("Nome não encontrado no banco de dados.");
+        }
+
+        scanner.close();
+    }
+}
